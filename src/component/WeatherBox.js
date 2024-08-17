@@ -1,13 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-const WeatherBox = () => {
+const WeatherBox = ({ weather }) => {
+    const toFahrenheit = (celsius) => (celsius * 9/5) + 32;
+
     return (
-        <div class="WeatherBox">
-            <div>서울</div>
-            <div>30도</div>
-            <div>맑은 하늘</div>
+        <div className="WeatherBox">
+            <div>{weather?.name}</div>
+            <div>{weather?.main.temp}°C / {toFahrenheit(weather?.main.temp).toFixed(2)}°F</div>
+            <div>{weather?.weather[0].description}</div>
         </div>
-    )
+    );
 }
 
-export default WeatherBox
+export default WeatherBox;
